@@ -44,9 +44,7 @@
 实现方法：一、自定义悬浮按钮，并将按钮置于程序窗口之上【单例】
 
 RWDriftButton.h
-#import &amp;lt;UIKit/UIKit.h&amp;gt;
-
-@interface RWDriftButton : UIButto">
+123456#import &amp;lt;UIKit/UIKit.h&amp;gt;@interface RWDriftButton : UIB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS悬浮按钮的实现">
 <meta property="og:url" content="http://yoursite.com/2016/10/29/iOS悬浮按钮的实现/index.html">
@@ -56,13 +54,11 @@ RWDriftButton.h
 实现方法：一、自定义悬浮按钮，并将按钮置于程序窗口之上【单例】
 
 RWDriftButton.h
-#import &amp;lt;UIKit/UIKit.h&amp;gt;
-
-@interface RWDriftButton : UIButto">
+123456#import &amp;lt;UIKit/UIKit.h&amp;gt;@interface RWDriftButton : UIB">
 <meta property="og:image" content="https://github.com/WangMasterpro/DriftButton_Global/blob/master/img/DriftButton_Global1.gif">
 <meta property="og:image" content="https://github.com/WangMasterpro/DriftButton_Global/blob/master/img/DriftButton_Global2.gif">
 <meta property="og:image" content="https://github.com/WangMasterpro/DriftButton_Global/blob/master/img/DriftButton_Global3.gif">
-<meta property="og:updated_time" content="2016-10-29T07:38:50.000Z">
+<meta property="og:updated_time" content="2016-10-29T07:55:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS悬浮按钮的实现">
 <meta name="twitter:description" content="iOS悬浮按钮的实现需求描述项目中为了实现“新手礼包”悬浮按钮需求：悬浮按钮在项目当中若干页面出现，且按钮不随着页面的上下和左右滑动而改变位置。
@@ -70,9 +66,7 @@ RWDriftButton.h
 实现方法：一、自定义悬浮按钮，并将按钮置于程序窗口之上【单例】
 
 RWDriftButton.h
-#import &amp;lt;UIKit/UIKit.h&amp;gt;
-
-@interface RWDriftButton : UIButto">
+123456#import &amp;lt;UIKit/UIKit.h&amp;gt;@interface RWDriftButton : UIB">
 <meta name="twitter:image" content="https://github.com/WangMasterpro/DriftButton_Global/blob/master/img/DriftButton_Global1.gif">
 
 
@@ -291,12 +285,7 @@ RWDriftButton.h
 <h3 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h3><font size="3"><strong>一、自定义悬浮按钮，并将按钮置于程序窗口之上【单例】</strong></font>
 
 <p>RWDriftButton.h</p>
-<pre><code>#import &lt;UIKit/UIKit.h&gt;
-
-@interface RWDriftButton : UIButton
-@property (nonatomic, copy) void (^clickHandler)(); // 悬浮按钮的点击回调
-+ (instancetype)shareInstance;
-@end;
+<pre><code><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RWDriftButton</span> : <span class="title">UIButton</span></span></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="keyword">void</span> (^clickHandler)(); <span class="comment">// 悬浮按钮的点击回调</span></div><div class="line">+ (<span class="keyword">instancetype</span>)shareInstance;</div><div class="line"><span class="keyword">@end</span>;</div></pre></td></tr></table></figure>
 </code></pre><p>RWDriftButton.m</p>
 <pre><code>    #import &quot;RWDriftButton.h&quot;
 
