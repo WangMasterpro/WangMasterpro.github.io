@@ -1074,7 +1074,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fff;
+  background: #ff81ff;
 }
 .links-of-friendly a {
   display: inline-block;
@@ -1092,7 +1092,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9a94e3;
+  background: #01f07c;
 }
 .sidebar-nav {
   margin: 0;
