@@ -57,7 +57,7 @@
 .h中添加的的在类的实例中也可使用。
 // 分类的头文件
 @interfac">
-<meta property="og:updated_time" content="2017-09-08T13:12:33.000Z">
+<meta property="og:updated_time" content="2017-09-08T13:13:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Objective-C:给分类(category)添加属性/关联对象 AssociatedObject">
 <meta name="twitter:description" content="概述在Category中并不会生成实例变量和存取方法，需要手动实现。所以一般常使用Runtime关联对象为已经存在的类添加属性。
@@ -333,29 +333,25 @@ const void *key：关联的key，要求唯一
 id value：关联的对象
 objc_AssociationPolicy policy：内存管理的策略
 </code></pre></li>
+<li><p>关联策略<br>关联策略(objc_AssociationPolicy)指的是枚举值，policy的enum值包含以下几种</p>
+<pre><code>enum {
+OBJC_ASSOCIATION_ASSIGN = 0, //关联对象的属性是弱引用 
+
+OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, //关联对象的属性是强引用并且关联对象不使用原子性
+
+OBJC_ASSOCIATION_COPY_NONATOMIC = 3, //关联对象的属性是copy并且关联对象不使用原子性
+
+OBJC_ASSOCIATION_RETAIN = 01401, //关联对象的属性是copy并且关联对象使用原子性
+
+    OBJC_ASSOCIATION_COPY = 01403 //关联对象的属性是copy并且关联对象使用原子性
+};
+</code></pre></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<pre><code>* 关联策略(objc_AssociationPolicy)
-  关联策略指的是枚举值，policy的enum值包含以下几种
-
-
-        enum {
-        OBJC_ASSOCIATION_ASSIGN = 0, //关联对象的属性是弱引用 
-
-        OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, //关联对象的属性是强引用并且关联对象不使用原子性
-
-        OBJC_ASSOCIATION_COPY_NONATOMIC = 3, //关联对象的属性是copy并且关联对象不使用原子性
-
-        OBJC_ASSOCIATION_RETAIN = 01401, //关联对象的属性是copy并且关联对象使用原子性
-
-            OBJC_ASSOCIATION_COPY = 01403 //关联对象的属性是copy并且关联对象使用原子性
-        };
-
-
-    当对象被释放时，会根据此策略决定是否释放关联的对象。
+<pre><code>当对象被释放时，会根据此策略决定是否释放关联的对象。
 </code></pre><h1 id="关联对象的内存管理"><a href="#关联对象的内存管理" class="headerlink" title="关联对象的内存管理"></a>关联对象的内存管理</h1><ul>
 <li>关联对象的释放实际与移除时机并不总是一致，如果使用关联策略<code>OBJC_ASSOCIATION_ASSIGN</code>进行关联对像即便释放，其在内存中也不会移除，如果在使用此关联对象时会crash。</li>
 <li>关联对象与被关联对象本身的存储并无直接关系，它是存储在单独的哈希表中。</li>
