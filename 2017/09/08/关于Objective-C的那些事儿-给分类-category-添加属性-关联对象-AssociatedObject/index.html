@@ -57,7 +57,7 @@
 .h中添加的的在类的实例中也可使用。
 // 分类的头文件
 @interfac">
-<meta property="og:updated_time" content="2017-09-08T13:19:04.000Z">
+<meta property="og:updated_time" content="2017-09-08T13:22:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Objective-C:给分类(category)添加属性/关联对象 AssociatedObject">
 <meta name="twitter:description" content="概述在Category中并不会生成实例变量和存取方法，需要手动实现。所以一般常使用Runtime关联对象为已经存在的类添加属性。
@@ -320,7 +320,7 @@
 
 3、用selector，使用getter方法的名称作为key值。【推荐使用】
 </code></pre></li>
-<li><p>关联对象<br>runtime提供的方法如下：</p>
+<li><p>关联对象<br><code>runtime</code>提供的方法如下：</p>
 <pre><code>  // 关联对象
 void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
 // 获取关联的对象
@@ -333,7 +333,7 @@ const void *key：关联的key，要求唯一
 id value：关联的对象
 objc_AssociationPolicy policy：内存管理的策略
 </code></pre></li>
-<li><p>关联策略<br>关联策略(objc_AssociationPolicy)指的是枚举值，policy的enum值包含以下几种</p>
+<li><p>关联策略<br>关联策略(<code>objc_AssociationPolicy</code>)指的是枚举值，policy的enum值包含以下几种</p>
 <pre><code>enum {
 OBJC_ASSOCIATION_ASSIGN = 0, //关联对象的属性是弱引用 
 
@@ -365,18 +365,16 @@ OBJC_ASSOCIATION_RETAIN = 01401, //关联对象的属性是copy并且关联对�
 <li>为现有的类添加公有属性；</li>
 <li>为KVO创建一个关联的观察者。</li>
 </ul>
-<h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><p>在runtime源码中可以找到如下三个与Associated Objects相关的三个函数:</p>
+<h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><p>在<code>runtime</code>源码中可以找到如下三个与<code>Associated Objects</code>相关的三个函数:</p>
 <pre><code>void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);
 void objc_getAssociatedObject(id object, const void *key);
 void objc_removeAssociatedObjects(id object);
 </code></pre><ul>
 <li>objc_setAssociatedObject 用于给对象添加关联对象，传入nil则可以移除已有的关联对象；</li>
 <li>objc_getAssociatedObject 用于获取关联对象；</li>
-<li><p>objc_removeAssociatedObjects 用于移除一个对象的所有关联对象。</p>
-<pre><code>objc_removeAssociatedObjects 函数我们一般用不上，因为它会移除一个对象的所有关联对象，将该对象恢复&quot;原始&quot;状态。这样会把别人添加的关联对象也一并移除。
-因此会选择通过给 objc_setAssociatedObject 函数传入ni来移除某个已有的关联对象。
-</code></pre></li>
+<li>objc_removeAssociatedObjects 用于移除一个对象的所有关联对象。</li>
 </ul>
+<p><code>objc_removeAssociatedObjects</code> 函数我们一般用不上，因为它会移除一个对象的所有关联对象，将该对象恢复”原始”状态。这样会把别人添加的关联对象也一并移除。<br>因此会选择通过给 <code>objc_setAssociatedObject</code> 函数传入ni来移除某个已有的关联对象。</p>
 </span>
       
     </div>
