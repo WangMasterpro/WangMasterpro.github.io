@@ -57,7 +57,7 @@
 .h中添加的的在类的实例中也可使用。
 // 分类的头文件
 @interfac">
-<meta property="og:updated_time" content="2017-09-08T13:00:35.000Z">
+<meta property="og:updated_time" content="2017-09-08T13:01:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Objective-C:给分类(category)添加属性/关联对象 AssociatedObject">
 <meta name="twitter:description" content="概述在Category中并不会生成实例变量和存取方法，需要手动实现。所以一般常使用Runtime关联对象为已经存在的类添加属性。
@@ -339,6 +339,7 @@ void objc_removeAssociatedObjects(id object)
             const void *key：关联的key，要求唯一
             id value：关联的对象
             objc_AssociationPolicy policy：内存管理的策略
+
 
 * 关联策略(objc_AssociationPolicy)
   关联策略指的是枚举值，policy的enum值包含以下几种：
