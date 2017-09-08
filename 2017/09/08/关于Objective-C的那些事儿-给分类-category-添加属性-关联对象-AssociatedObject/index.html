@@ -39,61 +39,34 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="概览Category是OC中特有的方法，（在java中不存在）分类只是用来扩展类时不需要继承关系那么复杂，特殊的语法处理特殊的问题，语法就是如此发展而来。
-、、、objectivec
-    // 声明
-
-@interface 类名(分类名称)
-
-@end
-
-// 实现
-
-@implementation 类名（分类名称）
-
-@end
-、、、
-
-分类只是用来扩展类时不需要继承关系那么麻烦。如果使用继">
+<meta name="description" content="概述在Category中并不会生成实例变量和存取方法，需要手动实现。所以一般常使用Runtime关联对象为已经存在的类添加属性。
+使用方法引入运行时头文件#import &amp;lt;objc/runtime.h&amp;gt;
+在匿名分类或者.h中添加属性二者区别
+匿名分类中添加的是私有属性，只在本类中可以使用，类的实例中不可使用。
+.h中添加的的在类的实例中也可使用。
+// 分类的头文件
+@interfac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于Objective-C的那些事儿:Category(分类,类别)">
-<meta property="og:url" content="http://yoursite.com/2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/index.html">
+<meta property="og:title" content="深入理解Objective-C:给分类(category)添加属性/关联对象 AssociatedObject">
+<meta property="og:url" content="http://yoursite.com/2017/09/08/关于Objective-C的那些事儿-给分类-category-添加属性-关联对象-AssociatedObject/index.html">
 <meta property="og:site_name" content="欢迎光临">
-<meta property="og:description" content="概览Category是OC中特有的方法，（在java中不存在）分类只是用来扩展类时不需要继承关系那么复杂，特殊的语法处理特殊的问题，语法就是如此发展而来。
-、、、objectivec
-    // 声明
-
-@interface 类名(分类名称)
-
-@end
-
-// 实现
-
-@implementation 类名（分类名称）
-
-@end
-、、、
-
-分类只是用来扩展类时不需要继承关系那么麻烦。如果使用继">
-<meta property="og:updated_time" content="2017-09-07T07:48:40.000Z">
+<meta property="og:description" content="概述在Category中并不会生成实例变量和存取方法，需要手动实现。所以一般常使用Runtime关联对象为已经存在的类添加属性。
+使用方法引入运行时头文件#import &amp;lt;objc/runtime.h&amp;gt;
+在匿名分类或者.h中添加属性二者区别
+匿名分类中添加的是私有属性，只在本类中可以使用，类的实例中不可使用。
+.h中添加的的在类的实例中也可使用。
+// 分类的头文件
+@interfac">
+<meta property="og:updated_time" content="2017-09-08T12:57:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于Objective-C的那些事儿:Category(分类,类别)">
-<meta name="twitter:description" content="概览Category是OC中特有的方法，（在java中不存在）分类只是用来扩展类时不需要继承关系那么复杂，特殊的语法处理特殊的问题，语法就是如此发展而来。
-、、、objectivec
-    // 声明
-
-@interface 类名(分类名称)
-
-@end
-
-// 实现
-
-@implementation 类名（分类名称）
-
-@end
-、、、
-
-分类只是用来扩展类时不需要继承关系那么麻烦。如果使用继">
+<meta name="twitter:title" content="深入理解Objective-C:给分类(category)添加属性/关联对象 AssociatedObject">
+<meta name="twitter:description" content="概述在Category中并不会生成实例变量和存取方法，需要手动实现。所以一般常使用Runtime关联对象为已经存在的类添加属性。
+使用方法引入运行时头文件#import &amp;lt;objc/runtime.h&amp;gt;
+在匿名分类或者.h中添加属性二者区别
+匿名分类中添加的是私有属性，只在本类中可以使用，类的实例中不可使用。
+.h中添加的的在类的实例中也可使用。
+// 分类的头文件
+@interfac">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -103,7 +76,7 @@
   };
 </script>
 
-  <title> 关于Objective-C的那些事儿:Category(分类,类别) | 欢迎光临 </title>
+  <title> 深入理解Objective-C:给分类(category)添加属性/关联对象 AssociatedObject | 欢迎光临 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +224,7 @@
           
           
             
-              关于Objective-C的那些事儿:Category(分类,类别)
+              深入理解Objective-C:给分类(category)添加属性/关联对象 AssociatedObject
             
           
         </h1>
@@ -260,8 +233,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2017-09-06T20:02:00+08:00" content="2017-09-06">
-            2017-09-06
+          <time itemprop="dateCreated" datetime="2017-09-07T16:00:51Z" content="2017-09-07">
+            2017-09-07
           </time>
         </span>
 
@@ -287,11 +260,11 @@
             <span class="post-comments-count">
               &nbsp; | &nbsp;
               <!--
-              <a href="/2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/" itemprop="commentsCount"></span>
+              <a href="/2017/09/08/关于Objective-C的那些事儿-给分类-category-添加属性-关联对象-AssociatedObject/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/08/关于Objective-C的那些事儿-给分类-category-添加属性-关联对象-AssociatedObject/" itemprop="commentsCount"></span>
               </a>
               -->
-              <a href="/2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/#comments" itemprop="discussionUrl">
+              <a href="/2017/09/08/关于Objective-C的那些事儿-给分类-category-添加属性-关联对象-AssociatedObject/#comments" itemprop="discussionUrl">
                 <span>评论</span>
               </a>
             </span>
@@ -306,79 +279,108 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Category是OC中特有的方法，（在java中不存在）分类只是用来扩展类时不需要继承关系那么复杂，特殊的语法处理特殊的问题，语法就是如此发展而来。</p>
-<pre><code>、、、objectivec
-    // 声明
-
-@interface 类名(分类名称)
-
+        <span itemprop="articleBody"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在Category中并不会生成实例变量和存取方法，需要手动实现。所以一般常使用Runtime<code>关联对象</code>为已经存在的类添加<code>属性</code>。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="引入运行时头文件"><a href="#引入运行时头文件" class="headerlink" title="引入运行时头文件"></a>引入运行时头文件</h3><pre><code>#import &lt;objc/runtime.h&gt;
+</code></pre><h3 id="在匿名分类或者-h中添加属性"><a href="#在匿名分类或者-h中添加属性" class="headerlink" title="在匿名分类或者.h中添加属性"></a>在匿名分类或者.h中添加属性</h3><h4 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h4><ul>
+<li>匿名分类中添加的是私有属性，只在本类中可以使用，类的实例中不可使用。</li>
+<li><p>.h中添加的的在类的实例中也可使用。</p>
+<pre><code>// 分类的头文件
+@interface ClassName (CategoryName)
+//我要添加一个实例也可以访问的变量所以就写在这里了
+@property (nonatomic, strong) NSString *str;
 @end
 
-// 实现
-
-@implementation 类名（分类名称）
+// 匿名分类
+@interface ClassName ()
 
 @end
-、、、
+</code></pre></li>
+<li><p>在实现里面写要添加属性的getter、setter方法</p>
+<pre><code>@implementation ClassName (CategoryName) 
+
+-(void)setStr:(NSString *)str  
+{  
+    objc_setAssociatedObject(self, &amp;strKey, str, OBJC_ASSOCIATION_COPY);  
+}  
+
+-(NSString *)str  
+{  
+    return objc_getAssociatedObject(self, &amp;strKey);  
+}
+@end
 </code></pre><ul>
-<li><p>分类只是用来扩展类时不需要继承关系那么麻烦。如果使用继承关系扩充一个类，有一个弊病(面向对象弊病)：</p>
+<li><p>如上所示：<code>setStr:</code>方法中使用的<code>objc_setAssociatedObject</code>方法有四个参数：</p>
 <ul>
-<li>高耦合性:只要父类稍作改变，子类就会受到严重影响，甚至导致子类不可用，给开发带来困难。</li>
+<li>源对象</li>
+<li><p>标记属性的key(关联时用来标记是哪一个属性的key)<br>常见有三种写法：</p>
+<pre><code>// 利用静态变量地址唯一不变的特性
+1、static void *strKey = &amp;strKey; 使用strKey作为key值；
+
+2、static NSString *strKey = @&quot;strKey&quot;; 或者 static char strKey; 使用&amp;strKey作为key值；
+
+3、用selector，使用getter方法的名称作为key值。【推荐使用】
+</code></pre></li>
+<li><p>关联对象<br>runtime提供的方法如下：</p>
+<pre><code>  // 关联对象
+void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
+// 获取关联的对象
+id objc_getAssociatedObject(id object, const void *key)
+// 移除关联的对象
+void objc_removeAssociatedObjects(id object)
+</code></pre></li>
 </ul>
 </li>
 </ul>
-<h2 id="使用场景："><a href="#使用场景：" class="headerlink" title="使用场景："></a>使用场景：</h2><p>把不同的功能写在不同的类中去，并且命名；分类模块一般以功能命名，而不是以作者命名。</p>
-<ul>
-<li>凡是要扩充一些工具方法，优先考虑分类，如果没有发现合适的类扩充，则在新建类。</li>
-<li>开发中经常要写一些分类，把有价值方法抽出来，方便拓展使用<ul>
-<li>水印功能比较好用，可抽出来，以后使用</li>
-<li>可经常打造自己的分类，积累越多，以后开发越轻松，打造自己的<code>类库</code> <code>框架</code>供调用，即造轮子。</li>
-</ul>
 </li>
 </ul>
-<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><ul>
-<li>在分类中可调用原类的方法，也可访问原类的成员变量</li>
-<li>原类声明的成员变量，可在分类中直接访问</li>
-<li>不能在分类中声明成员变量</li>
-<li>如果在分类中定义且实现了原类中相同的方法，则原类中的方法会被覆盖，应当避免</li>
+<pre><code>    * 变量说明：
+
+            id object：被关联的对象
+            const void *key：关联的key，要求唯一
+            id value：关联的对象
+            objc_AssociationPolicy policy：内存管理的策略
+
+* 关联策略(objc_AssociationPolicy)
+  关联策略指的是枚举值，policy的enum值包含以下几种：
+
+
+        enum {
+        OBJC_ASSOCIATION_ASSIGN = 0, //关联对象的属性是弱引用 
+
+        OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, //关联对象的属性是强引用并且关联对象不使用原子性
+
+        OBJC_ASSOCIATION_COPY_NONATOMIC = 3, //关联对象的属性是copy并且关联对象不使用原子性
+
+        OBJC_ASSOCIATION_RETAIN = 01401, //关联对象的属性是copy并且关联对象使用原子性
+
+            OBJC_ASSOCIATION_COPY = 01403 //关联对象的属性是copy并且关联对象使用原子性
+        };
+
+
+    当对象被释放时，会根据此策略决定是否释放关联的对象。
+</code></pre><h1 id="关联对象的内存管理"><a href="#关联对象的内存管理" class="headerlink" title="关联对象的内存管理"></a>关联对象的内存管理</h1><ul>
+<li>关联对象的释放实际与移除时机并不总是一致，如果使用关联策略<code>OBJC_ASSOCIATION_ASSIGN</code>进行关联对像即便释放，其在内存中也不会移除，如果在使用此关联对象时会crash。</li>
+<li>关联对象与被关联对象本身的存储并无直接关系，它是存储在单独的哈希表中。</li>
+<li>管理对象的五种关联策略与属性的限定符非常类似，多数情况下会使用<code>OBJC_ASSOCIATION_RETAIN_NONATOMIC</code>的管理策略，可保证持有关联对象。</li>
+<li>关联对象释放时机：<br>  一个对象的所有关联对象是在此对象被释放时调用<code>_object_remove_assocations</code>函数中被移除的。</li>
 </ul>
-<h2 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h2><p>Category可以给某一个类扩充一些方法（不修改原来类的代码），但是不可以扩充成员变量（通过关联可以，见：）。</p>
-<h2 id="使用注意"><a href="#使用注意" class="headerlink" title="使用注意"></a>使用注意</h2><ul>
-<li><p>分类只能增加方法，不能增加成员变量；如果想增加变量，可以考虑通过集成创建子类，或者穿件关联也可。</p>
-</li>
-<li><p>分类方法实现中可访问原来类中声明的成员变量；</p>
-</li>
-<li><p>分类方法优先级最高：分类可重新实现原来类中方法，但会覆盖掉原来的方法，导致原来方法无法使用。</p>
-<ul>
-<li>调用顺序：优先去分类中查找，然后再去原来类中找，最后去父类中找。分类(最后参与编译的分类优先) -&gt; 原来类 -》 父类</li>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><pre><code>Associated Objects的三个主要使用场景：
+</code></pre><ul>
+<li>为现有的类添加私有变量以帮助实现细节；</li>
+<li>为现有的类添加公有属性；</li>
+<li>为KVO创建一个关联的观察者。</li>
 </ul>
-</li>
-<li><p>多个分类中如果实现了相同的方法，只有最后一个参与编译的才有效。</p>
-</li>
-</ul>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>适合团队开发。</p>
-<ul>
-<li><p>一个庞大的类可以分模块开发；</p>
-</li>
-<li><p>一个庞大的类可以由多个人来编写，利于团队合作。</p>
-</li>
-</ul>
-<h2 id="分类协议"><a href="#分类协议" class="headerlink" title="分类协议"></a>分类协议</h2><p>分类协议可以定义在单独的.h和.m文件中，也可定义在原来类中。</p>
-<ul>
-<li>一般都是单独定义在单独文件中</li>
-<li>也可定义在原来类中。(分类大部分情况都是单独文件，很少写在原来类里面)</li>
-</ul>
-<p>OC语法：冒号继承，尖号遵守协议，括号分类；</p>
-<h2 id="Category和Extension"><a href="#Category和Extension" class="headerlink" title="Category和Extension"></a>Category和Extension</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>Extension是Category的一个特例，其名字为匿名<br>extension在编译器处理，是类的一部分，随类的生命周期变化。<br>一般用来隐藏类的私有信息，不被外界访问，须有类的源码才能为一个类添加extension，因此无法为系统的类如NSSArray添加extension。</p>
-<h3 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h3><ul>
-<li>相同点：都可为一个类添加方法</li>
-<li><p>区别：</p>
-<ul>
-<li>Category在定义方法不实现，编译器不会报错，运行调用时出错；Extensions在实现中不实现编译器会警告。</li>
-<li>Category只能用于添加方法，不能用于添加成员变量（运行时添加关联对象也可添加）。extension中声明的方法和添加的成员变量是私有的，只有主实现能调用，外部类无法调用。</li>
-<li>Category增加方法如果与类方法同名会被覆盖，因为Category优先级高，而Extension则会报错。</li>
-</ul>
-</li>
+<h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><p>在runtime源码中可以找到如下三个与Associated Objects相关的三个函数:</p>
+<pre><code>void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);
+void objc_getAssociatedObject(id object, const void *key);
+void objc_removeAssociatedObjects(id object);
+</code></pre><ul>
+<li>objc_setAssociatedObject 用于给对象添加关联对象，传入nil则可以移除已有的关联对象；</li>
+<li>objc_getAssociatedObject 用于获取关联对象；</li>
+<li><p>objc_removeAssociatedObjects 用于移除一个对象的所有关联对象。</p>
+<pre><code>objc_removeAssociatedObjects 函数我们一般用不上，因为它会移除一个对象的所有关联对象，将该对象恢复&quot;原始&quot;状态。这样会把别人添加的关联对象也一并移除。
+因此会选择通过给 objc_setAssociatedObject 函数传入ni来移除某个已有的关联对象。
+</code></pre></li>
 </ul>
 </span>
       
@@ -397,13 +399,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/08/关于Objective-C的那些事儿-给分类-category-添加属性-关联对象-AssociatedObject/" rel="prev">深入理解Objective-C:给分类(category)添加属性/关联对象 AssociatedObject</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/29/iOS悬浮按钮的实现/" rel="next">iOS悬浮按钮的实现</a>
+              <a href="/2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/" rel="next">关于Objective-C的那些事儿:Category(分类,类别)</a>
             
           </div>
         </div>
@@ -440,8 +440,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/"
-                   data-title="关于Objective-C的那些事儿:Category(分类,类别)" data-url="http://yoursite.com/2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/">
+              <div class="ds-thread" data-thread-key="2017/09/08/关于Objective-C的那些事儿-给分类-category-添加属性-关联对象-AssociatedObject/"
+                   data-title="深入理解Objective-C:给分类(category)添加属性/关联对象 AssociatedObject" data-url="http://yoursite.com/2017/09/08/关于Objective-C的那些事儿-给分类-category-添加属性-关联对象-AssociatedObject/">
               </div>
             
           </div>
@@ -542,7 +542,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景："><span class="nav-number">2.</span> <span class="nav-text">使用场景：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点："><span class="nav-number">3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用："><span class="nav-number">4.</span> <span class="nav-text">作用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用注意"><span class="nav-number">5.</span> <span class="nav-text">使用注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">6.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类协议"><span class="nav-number">7.</span> <span class="nav-text">分类协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Category和Extension"><span class="nav-number">8.</span> <span class="nav-text">Category和Extension</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">8.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二者比较"><span class="nav-number">8.2.</span> <span class="nav-text">二者比较</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">1.1.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入运行时头文件"><span class="nav-number">1.1.1.</span> <span class="nav-text">引入运行时头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在匿名分类或者-h中添加属性"><span class="nav-number">1.1.2.</span> <span class="nav-text">在匿名分类或者.h中添加属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二者区别"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">二者区别</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关联对象的内存管理"><span class="nav-number">2.</span> <span class="nav-text">关联对象的内存管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用场景"><span class="nav-number">3.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关函数"><span class="nav-number">4.</span> <span class="nav-text">相关函数</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
