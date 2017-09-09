@@ -75,7 +75,7 @@
 、、、
 
 分类只是用来扩展类时不需要继承关系那么麻烦。如果使用继">
-<meta property="og:updated_time" content="2017-09-09T11:19:16.000Z">
+<meta property="og:updated_time" content="2017-09-09T11:20:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Objective-C的那些事儿:Category(分类,类别)">
 <meta name="twitter:description" content="概览Category是OC中特有的方法，（在java中不存在）分类只是用来扩展类时不需要继承关系那么复杂，特殊的语法处理特殊的问题，语法就是如此发展而来。
@@ -380,16 +380,16 @@
 </ul>
 </li>
 </ul>
-<h1 id="Category如何加载"><a href="#Category如何加载" class="headerlink" title="Category如何加载"></a>Category如何加载</h1><p>如果在分类中实现了原类的方法，如<code>methodA</code>，需要注意：</p>
+<h2 id="Category如何加载"><a href="#Category如何加载" class="headerlink" title="Category如何加载"></a>Category如何加载</h2><p>如果在分类中实现了原类的方法，如<code>methodA</code>，需要注意：</p>
 <ul>
 <li><code>category</code>的方法没有‘完全替换掉’原类已有的方法，即<code>Category</code>和原类都会有<code>methodA</code>，<code>Category</code>加载完成后，类的方法列表里会有两个<code>methodA</code>。</li>
 <li><code>category</code>的方法被放到了新方法列表的前面，而原类的方法被放到了新方法列表的后面。因为运行时查找方法时是顺着方法列表的顺序查找的，只要找到对应名字的方法就会停止查找。</li>
 </ul>
-<h1 id="Category和-load方法"><a href="#Category和-load方法" class="headerlink" title="Category和+load方法"></a>Category和+load方法</h1><p>如果在原类和其<code>Category</code>中都有<code>load</code>方法时：</p>
+<h2 id="Category和-load方法"><a href="#Category和-load方法" class="headerlink" title="Category和+load方法"></a>Category和+load方法</h2><p>如果在原类和其<code>Category</code>中都有<code>load</code>方法时：</p>
 <ul>
 <li>在原类的<code>+load</code>方法调用时，可以调用<code>Category</code>中声明的方法吗？<br>可以调用，<code>Category</code>到原来类的附加工作会先与<code>+load</code>方法的执行。</li>
 <li><p>其调用顺序是怎么样的？<br><code>+load</code>方法的执行顺序：先本类，后<code>Category</code>，而<code>Category</code>的<code>+load</code>执行顺序是根据编译顺序决定的。</p>
-<p>  ps:编译顺序是根据<code>Xcode</code>的<code>Build Setting</code>中的<code>Compile Sources</code>中的类顺序决定。</p>
+<p>  <code>PS</code>:编译顺序是根据<code>Xcode</code>的<code>Build Setting</code>中的<code>Compile Sources</code>中的类顺序决定。</p>
 </li>
 </ul>
 </span>
@@ -554,7 +554,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景："><span class="nav-number">2.</span> <span class="nav-text">使用场景：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点："><span class="nav-number">3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用："><span class="nav-number">4.</span> <span class="nav-text">作用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用注意"><span class="nav-number">5.</span> <span class="nav-text">使用注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">6.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类协议"><span class="nav-number">7.</span> <span class="nav-text">分类协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Category和Extension"><span class="nav-number">8.</span> <span class="nav-text">Category和Extension</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">8.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二者比较"><span class="nav-number">8.2.</span> <span class="nav-text">二者比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Category如何加载"><span class="nav-number"></span> <span class="nav-text">Category如何加载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Category和-load方法"><span class="nav-number"></span> <span class="nav-text">Category和+load方法</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景："><span class="nav-number">2.</span> <span class="nav-text">使用场景：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点："><span class="nav-number">3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用："><span class="nav-number">4.</span> <span class="nav-text">作用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用注意"><span class="nav-number">5.</span> <span class="nav-text">使用注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">6.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类协议"><span class="nav-number">7.</span> <span class="nav-text">分类协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Category和Extension"><span class="nav-number">8.</span> <span class="nav-text">Category和Extension</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">8.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二者比较"><span class="nav-number">8.2.</span> <span class="nav-text">二者比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Category如何加载"><span class="nav-number">9.</span> <span class="nav-text">Category如何加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Category和-load方法"><span class="nav-number">10.</span> <span class="nav-text">Category和+load方法</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
