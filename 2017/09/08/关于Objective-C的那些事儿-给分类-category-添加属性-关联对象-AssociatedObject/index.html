@@ -57,7 +57,7 @@
 .h中添加的的在类的实例中也可使用。
 // 分类的头文件
 @interfac">
-<meta property="og:updated_time" content="2017-09-09T09:01:09.000Z">
+<meta property="og:updated_time" content="2017-09-09T10:51:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Objective-C的那些事儿:给分类(category)添加属性/关联对象 AssociatedObject">
 <meta name="twitter:description" content="概述在Category中并不会生成实例变量和存取方法，需要手动实现。所以一般常使用Runtime关联对象为已经存在的类添加属性。
@@ -363,14 +363,14 @@ OBJC_ASSOCIATION_RETAIN = 01401, //关联对象的属性是copy并且关联对�
 </code></pre><ul>
 <li>为现有的类添加私有变量以帮助实现细节；</li>
 <li>为现有的类添加公有属性；</li>
-<li>为KVO创建一个关联的观察者。</li>
-</ul>
+<li><p>为KVO创建一个关联的观察者。<br>有时在分类中使用KVO，推荐使用关联的对象作为观察者，尽量避免对象观察自身。</p>
 <h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><p>在<code>runtime</code>源码中可以找到如下三个与<code>Associated Objects</code>相关的三个函数:</p>
 <pre><code>void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);
 void objc_getAssociatedObject(id object, const void *key);
 void objc_removeAssociatedObjects(id object);
-</code></pre><ul>
-<li>objc_setAssociatedObject 用于给对象添加关联对象，传入nil则可以移除已有的关联对象；</li>
+</code></pre></li>
+<li><p>objc_setAssociatedObject 用于给对象添加关联对象，传入nil则可以移除已有的关联对象；</p>
+</li>
 <li>objc_getAssociatedObject 用于获取关联对象；</li>
 <li>objc_removeAssociatedObjects 用于移除一个对象的所有关联对象。</li>
 </ul>
