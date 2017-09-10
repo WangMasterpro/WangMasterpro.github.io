@@ -57,7 +57,7 @@
 .h中添加的的在类的实例中也可使用。
 // 分类的头文件
 @interfac">
-<meta property="og:updated_time" content="2017-09-09T10:51:27.000Z">
+<meta property="og:updated_time" content="2017-09-10T15:18:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Objective-C的那些事儿:给分类(category)添加属性/关联对象 AssociatedObject">
 <meta name="twitter:description" content="概述在Category中并不会生成实例变量和存取方法，需要手动实现。所以一般常使用Runtime关联对象为已经存在的类添加属性。
@@ -359,8 +359,8 @@ OBJC_ASSOCIATION_RETAIN = 01401, //关联对象的属性是copy并且关联对�
 <li>管理对象的五种关联策略与属性的限定符非常类似，多数情况下会使用<code>OBJC_ASSOCIATION_RETAIN_NONATOMIC</code>的管理策略，可保证持有关联对象。</li>
 <li>关联对象释放时机：<br>  一个对象的所有关联对象是在此对象被释放时调用<code>_object_remove_assocations</code>函数中被移除的。</li>
 </ul>
-<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><pre><code>Associated Objects的三个主要使用场景：
-</code></pre><ul>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>Associated Objects的三个主要使用场景：</p>
+<ul>
 <li>为现有的类添加私有变量以帮助实现细节；</li>
 <li>为现有的类添加公有属性；</li>
 <li><p>为KVO创建一个关联的观察者。<br>有时在分类中使用KVO，推荐使用关联的对象作为观察者，尽量避免对象观察自身。</p>
@@ -391,6 +391,8 @@ void objc_removeAssociatedObjects(id object);
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/11/关于Xcode的那些事儿-浅谈一些LLDB调试命令/" rel="prev">关于Xcode的那些事儿:浅谈一些LLDB调试命令</a>
             
           </div>
 
@@ -474,7 +476,7 @@ void objc_removeAssociatedObjects(id object);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
