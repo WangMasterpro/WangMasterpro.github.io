@@ -56,7 +56,7 @@ p / pop用来输出基本数据类型，p">
 <meta property="og:image" content="http://yoursite.com/images/makeBreakPoint.png">
 <meta property="og:image" content="http://yoursite.com/images/triggerBreadPoint.png">
 <meta property="og:image" content="http://yoursite.com/images/format1.png">
-<meta property="og:updated_time" content="2017-09-14T14:08:25.000Z">
+<meta property="og:updated_time" content="2017-09-14T14:12:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Debug的那些事儿:浅谈一些LLDB调试命令">
 <meta name="twitter:description" content="概览我们平时开发调试输出信息除了printf或者NSLog以外，还可使用LLDB来更便利的调试。
@@ -289,7 +289,7 @@ p / pop用来输出基本数据类型，p">
 <pre><code>p (int)[[[self view] subviews] count]
 </code></pre><p>最后看到输出如下：</p>
 <pre><code>(int) $2 = 2;
-</code></pre><p>  输出信息中为何带有$1、$2的字样?<br>  因为每次查询的结果都会保存在一些持续变量中($[0-9]+),这样既可在后面查询中世界使用这些值。如下，可以重新取回$1的值：</p>
+</code></pre><p>  输出信息中为何带有<code>$1、$2</code>的字样?<br>  因为每次查询的结果都会保存在一些持续变量中<code>($[0-9]+)</code>,这样既可在后面查询中世界使用这些值。如下，可以重新取回<code>$1</code>的值：</p>
 <pre><code>po $1
 (UIView *) $1 = 0x0824c800 &lt;UITableView:0x824c800; frame = (0 20; 768 1004); clipsToBounds = YES; autoresize = W+H; gestureRecognizers = &lt;NSArray: 0x74c3010&gt;; layer = &lt;CALayer: 0x74c2710&gt;; contentOffset: {0, 0}&gt;
 </code></pre><p>  如此依然可以取到之前[<code>self view]</code>的值。</p>
@@ -334,8 +334,8 @@ NSLog(@&quot;实际值：%d&quot;, a);
 </li>
 <li><p>格式化输出数据</p>
 <p>替代<code>NSLog</code>输出方式，可在编辑断点使其输出格式化字符串像平时编码一样。<br>平时编码可能会使用<code>[NSString stringWithFormat:]</code>输出格式化字符串，不过在断点调试中无效果，需要使用<code>alloc/init</code>形式，如下所示：</p>
-<p>  po [[NSString alloc] initWithFormat:@”Item index is: %d”, index]</p>
-<p>或者如图所示使用：</p>
+<pre><code>po [[NSString alloc] initWithFormat:@&quot;Item index is: %d&quot;, index]
+</code></pre><p>或者如图所示使用：</p>
 <p><img src="/images/format1.png" alt="format1"></p>
 <p>运行程序就可看到相应输出<code>log</code>。</p>
 </li>
