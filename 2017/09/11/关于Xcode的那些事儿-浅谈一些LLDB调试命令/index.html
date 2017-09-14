@@ -56,7 +56,7 @@ p / pop用来输出基本数据类型，p">
 <meta property="og:image" content="http://yoursite.com/设置断点.png">
 <meta property="og:image" content="http://yoursite.com/设置断点触发条件.png">
 <meta property="og:image" content="http://yoursite.com/格式化输出数据.png">
-<meta property="og:updated_time" content="2017-09-14T13:49:23.000Z">
+<meta property="og:updated_time" content="2017-09-14T13:52:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Debug的那些事儿:浅谈一些LLDB调试命令">
 <meta name="twitter:description" content="概览我们平时开发调试输出信息除了printf或者NSLog以外，还可使用LLDB来更便利的调试。
@@ -320,14 +320,14 @@ NSLog(@&quot;实际值：%d&quot;, a);
 <li><p>可以仅编辑断点，让它自动填充需要修改的变量值，并且可选择在此断点处不进入断点模式，仅修改指定变量的值，然后自动执行后续代码。</p>
 <ul>
 <li><p>方法：<br>右击断点选择“Edit Breadpoint…”（或按住cmd+option，单击断点）如图所示：</p>
-<p><img src="设置断点.png" alt=""></p>
+<p><img src="设置断点.png" alt="设置断点"></p>
 <p>   注意选中最后一行“Automatically continue after evaluating”的选择框，保证运行到此断点时填充变量的值，然后继续运行，不会停留在此断点处保持调试模式。<br>   运行程序，会得到如图所示两次设置变量的值的输出。<br>   禁用断点以后，重新运行程序则上述设置的变量值在运行时则不会被改变了。</p>
 </li>
 </ul>
 </li>
 <li><p>设置断点触发条件</p>
 <p>可设置断点的触摸生效条件，即可在运行时针对特定的数据进行分析，观察程序是否正常运行。如下图所示：</p>
-<p><img src="设置断点触发条件.png" alt=""></p>
+<p><img src="设置断点触发条件.png" alt="设置断点触发条件"></p>
 <p>上述截图中可看到如下语句：</p>
 <pre><code>(BOOL)[(NSString*)[item valueForKey:@&quot;ID&quot;] isEqualToString:@&quot;93306&quot;]
 </code></pre><p>通过此语句告诉编译器，当符合条件时，此断点才会生效，进入断点调试模式。</p>
@@ -336,7 +336,7 @@ NSLog(@&quot;实际值：%d&quot;, a);
 <p>替代NSLog输出方式，可在编辑断点使其输出格式化字符串像平时编码一样。<br>平时编码可能会使用[NSString stringWithFormat:]输出格式化字符串，不过在断点调试中无效果，需要使用alloc/init形式，如下所示：</p>
 <p>  po [[NSString alloc] initWithFormat:@”Item index is: %d”, index]</p>
 <p>或者如图所示使用：</p>
-<p><img src="格式化输出数据.png" alt=""></p>
+<p><img src="格式化输出数据.png" alt="格式化输出数据"></p>
 <p>运行程序就可看到相应输出log。</p>
 </li>
 </ul>
