@@ -55,8 +55,8 @@ LLDB是LLVM下的调试器。Xcode4.0开始，编译器开始改用LLVM，相应
 p / pop用来输出基本数据类型，p">
 <meta property="og:image" content="http://yoursite.com/images/makeBreakPoint.png">
 <meta property="og:image" content="http://yoursite.com/images/triggerBreadPoint.png">
-<meta property="og:image" content="http://yoursite.com/images/format1.png.png">
-<meta property="og:updated_time" content="2017-09-14T13:57:30.000Z">
+<meta property="og:image" content="http://yoursite.com/images/format1.png">
+<meta property="og:updated_time" content="2017-09-14T14:00:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Debug的那些事儿:浅谈一些LLDB调试命令">
 <meta name="twitter:description" content="概览我们平时开发调试输出信息除了printf或者NSLog以外，还可使用LLDB来更便利的调试。
@@ -336,7 +336,7 @@ NSLog(@&quot;实际值：%d&quot;, a);
 <p>替代NSLog输出方式，可在编辑断点使其输出格式化字符串像平时编码一样。<br>平时编码可能会使用[NSString stringWithFormat:]输出格式化字符串，不过在断点调试中无效果，需要使用alloc/init形式，如下所示：</p>
 <p>  po [[NSString alloc] initWithFormat:@”Item index is: %d”, index]</p>
 <p>或者如图所示使用：</p>
-<p><img src="/images/format1.png.png" alt="format1.png"></p>
+<p><img src="/images/format1.png" alt="format1"></p>
 <p>运行程序就可看到相应输出log。</p>
 </li>
 </ul>
