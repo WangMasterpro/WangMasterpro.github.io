@@ -56,7 +56,7 @@ p / pop用来输出基本数据类型，p">
 <meta property="og:image" content="http://yoursite.com/images/makeBreakPoint.png">
 <meta property="og:image" content="http://yoursite.com/images/triggerBreadPoint.png">
 <meta property="og:image" content="http://yoursite.com/images/format1.png">
-<meta property="og:updated_time" content="2017-09-14T14:12:23.000Z">
+<meta property="og:updated_time" content="2017-09-15T10:30:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Debug的那些事儿:浅谈一些LLDB调试命令">
 <meta name="twitter:description" content="概览我们平时开发调试输出信息除了printf或者NSLog以外，还可使用LLDB来更便利的调试。
@@ -281,7 +281,7 @@ p / pop用来输出基本数据类型，p">
 <p><code>LLDB</code>是<code>LLVM</code>下的调试器。<code>Xcode4.0</code>开始，编译器开始改用<code>LLVM</code>，相应的调试器也从<code>gdb</code>改为<code>LLDB</code>。<code>Xcode5.0</code>以后所有工程均自动设置为使用<code>LLDB</code>。</p>
 <p>那么日常开发中常用的<code>LLDB</code>命令和使用技巧有哪些呢？</p>
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>使用场景：程序断点的输出<code>log</code>处</p>
-<h3 id="p-po"><a href="#p-po" class="headerlink" title="p / po"></a>p / po</h3><p>p用来输出基本数据类型，<code>po</code>用于输出<code>Objective-C</code>对象。<br>如下可输出<code>view</code>的基本信息:</p>
+<h3 id="p-po"><a href="#p-po" class="headerlink" title="p / po"></a>p / po</h3><p><code>p</code>用来输出基本数据类型，<code>po</code>用于输出<code>Objective-C</code>对象。<br>如下可输出<code>view</code>的基本信息:</p>
 <pre><code>po [self view] 
 </code></pre><p>而不是 <code>po self.view</code>，<code>Xcode</code>默认不支持后者输出，需要额外设置，详见：<a href="http://www.jianshu.com/p/aaf8523f6ebf" target="_blank" rel="external">让Xcode的控制台支持<code>po frame</code>等的打印</a></p>
 <ul>
