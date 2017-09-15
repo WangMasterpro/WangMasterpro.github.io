@@ -56,7 +56,7 @@ p / pop用来输出基本数据类型，p">
 <meta property="og:image" content="http://yoursite.com/images/makeBreakPoint.png">
 <meta property="og:image" content="http://yoursite.com/images/triggerBreadPoint.png">
 <meta property="og:image" content="http://yoursite.com/images/format1.png">
-<meta property="og:updated_time" content="2017-09-15T10:30:19.000Z">
+<meta property="og:updated_time" content="2017-09-15T10:37:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Debug的那些事儿:浅谈一些LLDB调试命令">
 <meta name="twitter:description" content="概览我们平时开发调试输出信息除了printf或者NSLog以外，还可使用LLDB来更便利的调试。
@@ -283,13 +283,13 @@ p / pop用来输出基本数据类型，p">
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>使用场景：程序断点的输出<code>log</code>处</p>
 <h3 id="p-po"><a href="#p-po" class="headerlink" title="p / po"></a>p / po</h3><p><code>p</code>用来输出基本数据类型，<code>po</code>用于输出<code>Objective-C</code>对象。<br>如下可输出<code>view</code>的基本信息:</p>
 <pre><code>po [self view] 
-</code></pre><p>而不是 <code>po self.view</code>，<code>Xcode</code>默认不支持后者输出，需要额外设置，详见：<a href="http://www.jianshu.com/p/aaf8523f6ebf" target="_blank" rel="external">让Xcode的控制台支持<code>po frame</code>等的打印</a></p>
+</code></pre><p>而不是 <code>po self.view</code>，<code>Xcode</code>默认不支持后者输出，需要额外设置，详见：下文4.常见问题之4.2. 找不到方法：unsupported expression with unknown type 以及 <a href="http://www.jianshu.com/p/aaf8523f6ebf" target="_blank" rel="external">让Xcode的控制台支持<code>po frame</code>等的打印</a></p>
 <ul>
 <li><p>输出<code>view</code>下<code>subview</code>的数量。由于<code>subview</code>的数量是一个<code>int</code>类型的值，所以可使用命令<code>p</code>:</p>
 <pre><code>p (int)[[[self view] subviews] count]
 </code></pre><p>最后看到输出如下：</p>
 <pre><code>(int) $2 = 2;
-</code></pre><p>  输出信息中为何带有<code>$1、$2</code>的字样?<br>  因为每次查询的结果都会保存在一些持续变量中<code>($[0-9]+)</code>,这样既可在后面查询中世界使用这些值。如下，可以重新取回<code>$1</code>的值：</p>
+</code></pre><p>  输出信息中为何带有<code>$1、$2</code>的字样?<br>  因为每次查询的结果都会保存在一些持续变量中<code>($[0-9]+)</code>,这样既可在后面查询中直接使用这些值。如下，可以重新取回<code>$1</code>的值：</p>
 <pre><code>po $1
 (UIView *) $1 = 0x0824c800 &lt;UITableView:0x824c800; frame = (0 20; 768 1004); clipsToBounds = YES; autoresize = W+H; gestureRecognizers = &lt;NSArray: 0x74c3010&gt;; layer = &lt;CALayer: 0x74c2710&gt;; contentOffset: {0, 0}&gt;
 </code></pre><p>  如此依然可以取到之前[<code>self view]</code>的值。</p>
@@ -317,7 +317,7 @@ NSLog(@&quot;实际值：%d&quot;, a);
 </code></pre><p>  输出新声明对象的值。（<code>PS</code>: 对象名前要加$）</p>
 <pre><code>p $b
 </code></pre></li>
-<li><p>可以仅编辑断点，让它自动填充需要修改的变量值，并且可选择在此断点处不进入断点模式，仅修改指定变量的值，然后自动执行后续代码。</p>
+<li><p>可以仅编辑断点，让它自动填充需要修改的变量值，并且可选择在此断点处不进入断点模式，仅修改指定变量的值，然后自动执行后续代码(不停留断点)。</p>
 <ul>
 <li><p>方法：<br>右击断点选择“<code>Edit Breadpoint...</code>”（或按住<code>cmd+option</code>，单击断点）如图所示：</p>
 <p><img src="/images/makeBreakPoint.png" alt="makeBreakPoint"></p>
