@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="iOS," />
+  <meta name="keywords" content="图层树," />
 
 
 
@@ -39,61 +39,22 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="概览Category是OC中特有的方法，（在java中不存在）分类只是用来扩展类时不需要继承关系那么复杂，特殊的语法处理特殊的问题，语法就是如此发展而来。
-、、、objectivec
-    // 声明
-
-@interface 类名(分类名称)
-
-@end
-
-// 实现
-
-@implementation 类名（分类名称）
-
-@end
-、、、
-
-分类只是用来扩展类时不需要继承关系那么麻烦。如果使用继">
+<meta name="description" content="概览Core Animation不止是用来做动画的。它实际上是从一个叫做Layer Kit演变而来，做动画只是其冰山一角。
+Core Animation是一个复合引擎，它是尽可能快地组合屏幕上不同的可视内容，这些内容是被分解成独立的图层，存储在图层树体系之中。图层树形成了UIKit及其在iOS应用程序中所能在屏幕上看见的一切基础。
+本系列文章将从图层树开始，讲述Core Animation的静态组">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于Objective-C的那些事儿:Category(分类,类别)">
-<meta property="og:url" content="http://yoursite.com/2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/index.html">
+<meta property="og:title" content="关于iOS动画那些事儿:什么是图层树">
+<meta property="og:url" content="http://yoursite.com/2017/09/20/关于iOS动画那些事儿-什么是图层树/index.html">
 <meta property="og:site_name" content="欢迎光临">
-<meta property="og:description" content="概览Category是OC中特有的方法，（在java中不存在）分类只是用来扩展类时不需要继承关系那么复杂，特殊的语法处理特殊的问题，语法就是如此发展而来。
-、、、objectivec
-    // 声明
-
-@interface 类名(分类名称)
-
-@end
-
-// 实现
-
-@implementation 类名（分类名称）
-
-@end
-、、、
-
-分类只是用来扩展类时不需要继承关系那么麻烦。如果使用继">
-<meta property="og:updated_time" content="2017-09-09T11:21:55.000Z">
+<meta property="og:description" content="概览Core Animation不止是用来做动画的。它实际上是从一个叫做Layer Kit演变而来，做动画只是其冰山一角。
+Core Animation是一个复合引擎，它是尽可能快地组合屏幕上不同的可视内容，这些内容是被分解成独立的图层，存储在图层树体系之中。图层树形成了UIKit及其在iOS应用程序中所能在屏幕上看见的一切基础。
+本系列文章将从图层树开始，讲述Core Animation的静态组">
+<meta property="og:updated_time" content="2017-09-19T10:19:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于Objective-C的那些事儿:Category(分类,类别)">
-<meta name="twitter:description" content="概览Category是OC中特有的方法，（在java中不存在）分类只是用来扩展类时不需要继承关系那么复杂，特殊的语法处理特殊的问题，语法就是如此发展而来。
-、、、objectivec
-    // 声明
-
-@interface 类名(分类名称)
-
-@end
-
-// 实现
-
-@implementation 类名（分类名称）
-
-@end
-、、、
-
-分类只是用来扩展类时不需要继承关系那么麻烦。如果使用继">
+<meta name="twitter:title" content="关于iOS动画那些事儿:什么是图层树">
+<meta name="twitter:description" content="概览Core Animation不止是用来做动画的。它实际上是从一个叫做Layer Kit演变而来，做动画只是其冰山一角。
+Core Animation是一个复合引擎，它是尽可能快地组合屏幕上不同的可视内容，这些内容是被分解成独立的图层，存储在图层树体系之中。图层树形成了UIKit及其在iOS应用程序中所能在屏幕上看见的一切基础。
+本系列文章将从图层树开始，讲述Core Animation的静态组">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -103,7 +64,7 @@
   };
 </script>
 
-  <title> 关于Objective-C的那些事儿:Category(分类,类别) | 欢迎光临 </title>
+  <title> 关于iOS动画那些事儿:什么是图层树 | 欢迎光临 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +212,7 @@
           
           
             
-              关于Objective-C的那些事儿:Category(分类,类别)
+              关于iOS动画那些事儿:什么是图层树
             
           
         </h1>
@@ -260,8 +221,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2017-09-06T20:02:00+08:00" content="2017-09-06">
-            2017-09-06
+          <time itemprop="dateCreated" datetime="2017-09-19T17:45:02Z" content="2017-09-19">
+            2017-09-19
           </time>
         </span>
 
@@ -270,8 +231,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                  <span itemprop="name">Objective-C</span>
+                <a href="/categories/CoreAnimation/" itemprop="url" rel="index">
+                  <span itemprop="name">CoreAnimation</span>
                 </a>
               </span>
 
@@ -287,11 +248,11 @@
             <span class="post-comments-count">
               &nbsp; | &nbsp;
               <!--
-              <a href="/2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/" itemprop="commentsCount"></span>
+              <a href="/2017/09/20/关于iOS动画那些事儿-什么是图层树/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/20/关于iOS动画那些事儿-什么是图层树/" itemprop="commentsCount"></span>
               </a>
               -->
-              <a href="/2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/#comments" itemprop="discussionUrl">
+              <a href="/2017/09/20/关于iOS动画那些事儿-什么是图层树/#comments" itemprop="discussionUrl">
                 <span>评论</span>
               </a>
             </span>
@@ -306,93 +267,10 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p><code>Category</code>是<code>OC</code>中特有的方法，（在<code>java</code>中不存在）分类只是用来扩展类时不需要继承关系那么复杂，特殊的语法处理特殊的问题，语法就是如此发展而来。</p>
-<pre><code>、、、objectivec
-    // 声明
-
-@interface 类名(分类名称)
-
-@end
-
-// 实现
-
-@implementation 类名（分类名称）
-
-@end
-、、、
-</code></pre><ul>
-<li><p>分类只是用来扩展类时不需要继承关系那么麻烦。如果使用继承关系扩充一个类，有一个弊病(面向对象弊病)：</p>
-<ul>
-<li>高耦合性:只要父类稍作改变，子类就会受到严重影响，甚至导致子类不可用，给开发带来困难。</li>
-</ul>
-</li>
-</ul>
-<h2 id="使用场景："><a href="#使用场景：" class="headerlink" title="使用场景："></a>使用场景：</h2><p>把不同的功能写在不同的类中去，并且命名；分类模块一般以功能命名，而不是以作者命名。</p>
-<ul>
-<li>凡是要扩充一些工具方法，优先考虑分类，如果没有发现合适的类扩充，则在新建类。</li>
-<li>开发中经常要写一些分类，把有价值方法抽出来，方便拓展使用<ul>
-<li>水印功能比较好用，可抽出来，以后使用</li>
-<li>可经常打造自己的分类，积累越多，以后开发越轻松，打造自己的<code>类库</code> <code>框架</code>供调用，即造轮子。</li>
-</ul>
-</li>
-</ul>
-<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><ul>
-<li>在分类中可调用原类的方法，也可访问原类的成员变量</li>
-<li>原类声明的成员变量，可在分类中直接访问</li>
-<li>不能在分类中声明成员变量</li>
-<li>如果在分类中定义且实现了原类中相同的方法，则原类中的方法会被覆盖，应当避免</li>
-</ul>
-<h2 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h2><p><code>Category</code>可以给某一个类扩充一些方法（不修改原来类的代码），但是不可以扩充成员变量（通过关联可以，详见：<a href="http://wangmasterpro.com/2017/09/08/关于Objective-C的那些事儿-给分类-category-添加属性-关联对象-AssociatedObject/" target="_blank" rel="external">关于Objective-C的那些事儿:给分类(category)添加属性/关联对象 AssociatedObject</a>）。</p>
-<h2 id="使用注意"><a href="#使用注意" class="headerlink" title="使用注意"></a>使用注意</h2><ul>
-<li><p>分类只能增加方法，不能增加成员变量；如果想增加变量，可以考虑通过集成创建子类，或者穿件关联也可。</p>
-</li>
-<li><p>分类方法实现中可访问原来类中声明的成员变量；</p>
-</li>
-<li><p>分类方法优先级最高：分类可重新实现原来类中方法，但会覆盖掉原来的方法，导致原来方法无法使用。</p>
-<ul>
-<li>调用顺序：优先去分类中查找，然后再去原来类中找，最后去父类中找。分类(最后参与编译的分类优先) -&gt; 原来类 -》 父类</li>
-</ul>
-</li>
-<li><p>多个分类中如果实现了相同的方法，只有最后一个参与编译的才有效。</p>
-</li>
-</ul>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>适合团队开发。</p>
-<ul>
-<li><p>一个庞大的类可以分模块开发；</p>
-</li>
-<li><p>一个庞大的类可以由多个人来编写，利于团队合作。</p>
-</li>
-</ul>
-<h2 id="分类协议"><a href="#分类协议" class="headerlink" title="分类协议"></a>分类协议</h2><p>分类协议可以定义在单独的.h和.m文件中，也可定义在原来类中。</p>
-<ul>
-<li>一般都是单独定义在单独文件中</li>
-<li>也可定义在原来类中。(分类大部分情况都是单独文件，很少写在原来类里面)</li>
-</ul>
-<p>OC语法：冒号继承，尖号遵守协议，括号分类；</p>
-<h2 id="Category和Extension"><a href="#Category和Extension" class="headerlink" title="Category和Extension"></a>Category和Extension</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><code>Extension</code>是<code>Category</code>的一个特例，其名字为匿名<br><code>extension</code>在编译器处理，是类的一部分，随类的生命周期变化。<br>一般用来隐藏类的私有信息，不被外界访问，须有类的源码才能为一个类添加<code>extension</code>，因此无法为系统的类如<code>NSSArray</code>添加<code>extension</code>。</p>
-<h3 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h3><ul>
-<li>相同点：都可为一个类添加方法</li>
-<li><p>区别：</p>
-<ul>
-<li><code>Category</code>在定义方法不实现，编译器不会报错，运行调用时出错；Extensions在实现中不实现编译器会警告。</li>
-<li><code>Category</code>只能用于添加方法，不能用于添加成员变量（运行时添加关联对象也可添加）。<code>extension</code>中声明的方法和添加的成员变量是私有的，只有主实现能调用，外部类无法调用。</li>
-<li><code>Category</code>增加方法如果与类方法同名会被覆盖，因为<code>Category</code>优先级高，而<code>Extension</code>则会报错。</li>
-</ul>
-</li>
-</ul>
-<h2 id="Category如何加载"><a href="#Category如何加载" class="headerlink" title="Category如何加载"></a>Category如何加载</h2><p>如果在分类中实现了原类的方法，如<code>methodA</code>，需要注意：</p>
-<ul>
-<li><code>category</code>的方法没有‘完全替换掉’原类已有的方法，即<code>Category</code>和原类都会有<code>methodA</code>，<code>Category</code>加载完成后，类的方法列表里会有两个<code>methodA</code>。</li>
-<li><code>category</code>的方法被放到了新方法列表的前面，而原类的方法被放到了新方法列表的后面。因为运行时查找方法时是顺着方法列表的顺序查找的，只要找到对应名字的方法就会停止查找。</li>
-</ul>
-<h2 id="Category和-load方法"><a href="#Category和-load方法" class="headerlink" title="Category和+load方法"></a>Category和+load方法</h2><p>如果在原类和其<code>Category</code>中都有<code>load</code>方法时：</p>
-<ul>
-<li>在原类的<code>+load</code>方法调用时，可以调用<code>Category</code>中声明的方法吗？<br>可以调用，<code>Category</code>到原来类的附加工作会先与<code>+load</code>方法的执行。</li>
-<li><p>其调用顺序是怎么样的？<br><code>+load</code>方法的执行顺序：先本类，后<code>Category</code>，而<code>Category</code>的<code>+load</code>执行顺序是根据编译顺序决定的。</p>
-<p>  <code>PS</code>:编译顺序是根据<code>Xcode</code>的<code>Build Setting</code>中的<code>Compile Sources</code>中的类顺序决定。</p>
-</li>
-</ul>
-</span>
+        <span itemprop="articleBody"><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Core Animation不止是用来做动画的。它实际上是从一个叫做Layer Kit演变而来，做动画只是其冰山一角。</p>
+<p>Core Animation是一个复合引擎，它是尽可能快地组合屏幕上不同的可视内容，这些内容是被分解成独立的图层，存储在图层树体系之中。图层树形成了UIKit及其在iOS应用程序中所能在屏幕上看见的一切基础。</p>
+<p>本系列文章将从图层树开始，讲述Core Animation的静态组合及布局特性。</p>
+<h2 id="图层与视图"><a href="#图层与视图" class="headerlink" title="图层与视图"></a>图层与视图</h2></span>
       
     </div>
 
@@ -400,7 +278,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag">#iOS</a>
+            <a href="/tags/图层树/" rel="tag">#图层树</a>
           
         </div>
       
@@ -409,13 +287,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/08/关于Objective-C的那些事儿-给分类-category-添加属性-关联对象-AssociatedObject/" rel="prev">关于Objective-C的那些事儿:给分类(category)添加属性/关联对象 AssociatedObject</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/29/iOS悬浮按钮的实现/" rel="next">iOS悬浮按钮的实现</a>
+              <a href="/2017/09/11/关于Xcode的那些事儿-浅谈一些LLDB调试命令/" rel="next">关于Debug的那些事儿:浅谈一些LLDB调试命令</a>
             
           </div>
         </div>
@@ -452,8 +328,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/"
-                   data-title="关于Objective-C的那些事儿:Category(分类,类别)" data-url="http://yoursite.com/2017/09/06/关于Objective-C的那些事儿-Category-分类-类别/">
+              <div class="ds-thread" data-thread-key="2017/09/20/关于iOS动画那些事儿-什么是图层树/"
+                   data-title="关于iOS动画那些事儿:什么是图层树" data-url="http://yoursite.com/2017/09/20/关于iOS动画那些事儿-什么是图层树/">
               </div>
             
           </div>
@@ -554,7 +430,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景："><span class="nav-number">2.</span> <span class="nav-text">使用场景：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点："><span class="nav-number">3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用："><span class="nav-number">4.</span> <span class="nav-text">作用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用注意"><span class="nav-number">5.</span> <span class="nav-text">使用注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">6.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类协议"><span class="nav-number">7.</span> <span class="nav-text">分类协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Category和Extension"><span class="nav-number">8.</span> <span class="nav-text">Category和Extension</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">8.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二者比较"><span class="nav-number">8.2.</span> <span class="nav-text">二者比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Category如何加载"><span class="nav-number">9.</span> <span class="nav-text">Category如何加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Category和-load方法"><span class="nav-number">10.</span> <span class="nav-text">Category和+load方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图层与视图"><span class="nav-number">2.</span> <span class="nav-text">图层与视图</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
